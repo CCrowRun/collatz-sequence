@@ -11,6 +11,20 @@ def collatz_sequence(number)
   return sequence
 end
 
+def collatz_sequence_recursive(number)
+  if number <= 1
+    sequence = [number]
+    return sequence
+  else
+    if number % 2 == 0
+      next_number = number/2
+    elsif number % 2 == 1
+      next_number = 3 * number + 1
+    end
+    [number] + collatz_sequence_recursive(next_number)
+  end
+end
+
 def longest_collatz(highest_input)
   i = 1
   longest_sequence = { input: 0, length: 0 }
